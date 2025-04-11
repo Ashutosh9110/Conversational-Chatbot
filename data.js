@@ -41,7 +41,7 @@ const products = [
             warranty: "5 years limited warranty"
         },
         price: "$399.99",
-        imageUrl: "images/street-light.jpg",
+        imageUrl: "images/street_light1.webp",
         features: [
             "Automatic dusk-to-dawn operation",
             "Motion sensor for increased brightness when movement is detected",
@@ -67,7 +67,7 @@ const products = [
             warranty: "3 years limited warranty"
         },
         price: "$89.99 for a set of 4",
-        imageUrl: "images/driveway-light.jpg",
+        imageUrl: "images/driveway_light1.webp",
         features: [
             "Stylish modern design",
             "No wiring required",
@@ -93,7 +93,7 @@ const products = [
             warranty: "2 years limited warranty"
         },
         price: "$59.99 each",
-        imageUrl: "images/wall-light.jpg",
+        imageUrl: "images/wall_light1.webp",
         features: [
             "Three lighting modes: dim, bright, motion-activated",
             "Wide-angle illumination",
