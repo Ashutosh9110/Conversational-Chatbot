@@ -81,3 +81,135 @@ header h1 {
     resize: vertical;
 }
 
+.location-item,
+.hours-item,
+.product-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.product-item {
+    border-left: 4px solid #0084ff;
+}
+
+.remove-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-button.small {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.add-button {
+    background-color: #34c759;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.add-button.small {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.primary-button {
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.secondary-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.product-specifications,
+.product-features,
+.product-image-urls {
+    margin-top: 10px;
+}
+
+.specification-item,
+.feature-item,
+.image-url-item {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.specification-item input:first-child {
+    width: 30%;
+    margin-right: 10px;
+}
+
+.specification-item input:last-child {
+    width: 70%;
+}
+
+.image-previews-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-preview {
+    max-width: 200px;
+    max-height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 140px;
+    display: block;
+}
+
+.image-url-item input {
+    flex: 1;
+} 

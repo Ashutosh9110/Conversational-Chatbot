@@ -41,7 +41,10 @@ const products = [
             warranty: "5 years limited warranty"
         },
         price: "$399.99",
-        imageUrl: "images/street_light1.webp",
+        imageUrls: [
+            "images/street_light_1.webp",
+            "images/street_light_2.webp"
+        ],
         features: [
             "Automatic dusk-to-dawn operation",
             "Motion sensor for increased brightness when movement is detected",
@@ -67,7 +70,10 @@ const products = [
             warranty: "3 years limited warranty"
         },
         price: "$89.99 for a set of 4",
-        imageUrl: "images/driveway_light1.webp",
+        imageUrls: [
+            "images/driveway_light_1.webp",
+            "images/driveway_light_2.webp"
+        ],
         features: [
             "Stylish modern design",
             "No wiring required",
@@ -93,7 +99,10 @@ const products = [
             warranty: "2 years limited warranty"
         },
         price: "$59.99 each",
-        imageUrl: "images/wall_light1.webp",
+        imageUrls: [
+            "images/wall_light_1.webp",
+            "images/outside_wall_light_2.webp"
+        ],
         features: [
             "Three lighting modes: dim, bright, motion-activated",
             "Wide-angle illumination",
@@ -109,6 +118,7 @@ const imagesDir = "images";
 
 // Default bot responses
 const defaultResponses = {
+    niceties: "Hello, I am doing good. Thank you. How can I help you today?",
     greeting: "Hello! Welcome to ABC Lighting Company. I'm your virtual assistant. How can I help you today?",
     farewell: "Thank you for chatting with us. Have a great day!",
     fallback: "I'm sorry, I don't have information about that. Is there something else I can help you with regarding our solar lighting products?",

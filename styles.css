@@ -34,10 +34,13 @@ header p {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat-messages {
-    height: 400px;
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
 }
@@ -106,9 +109,19 @@ header p {
     text-decoration: underline;
 }
 
+.image-message {
+    padding: 8px;
+    background-color: #e6f7ff;
+    border-radius: 10px;
+    display: inline-block;
+    width: auto;
+    max-width: 60%;
+}
+
 .image-message img {
     max-width: 100%;
-    max-height: 200px;
     border-radius: 8px;
-    margin-top: 5px;
+    display: block;
+    margin: 0 auto;
+    max-height: 300px;
 } 
