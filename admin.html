@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Lighting Company - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ABC Lighting Company - Admin Panel</h1>
+            <a href="index.html" class="back-link">Back to Chat</a>
+        </header>
+        
+        <div class="admin-section">
+            <h2>Company Information</h2>
+            <div class="form-group">
+                <label for="company-name">Company Name:</label>
+                <input type="text" id="company-name" value="ABC Lighting Company">
+            </div>
+            
+            <div class="form-group">
+                <label for="company-description">Company Description:</label>
+                <textarea id="company-description" rows="3">We are a leading provider of energy-efficient solar lighting solutions for residential and commercial use.</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="company-general-info">General Information:</label>
+                <textarea id="company-general-info" rows="3">ABC Lighting Corp has been in business since 2005, specializing in solar-powered lighting solutions that help reduce energy costs while providing reliable illumination.</textarea>
+            </div>
+            
+            <h3>Locations</h3>
+            <div id="locations-container">
+                <!-- Location fields will be added here dynamically -->
+            </div>
+            <button id="add-location" class="add-button">+ Add Location</button>
+            
+            <h3>Business Hours</h3>
+            <div id="hours-container">
+                <!-- Hours fields will be added here dynamically -->
+            </div>
+            <button id="add-hours" class="add-button">+ Add Hours</button>
+        </div>
+        
+        <div class="admin-section">
+            <h2>Products</h2>
+            <div id="products-container">
+                <!-- Product fields will be added here dynamically -->
+            </div>
+            <button id="add-product" class="add-button">+ Add Product</button>
+        </div>
+        
+        <div class="admin-section">
+            <h2>Bot Responses</h2>
+            
+            <div class="form-group">
+                <label for="greeting-response">Greeting Response:</label>
+                <textarea id="greeting-response" rows="2">Hello! Welcome to ABC Lighting Company. I'm your virtual assistant. How can I help you today?</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="fallback-response">Fallback Response:</label>
+                <textarea id="fallback-response" rows="2">I'm sorry, I don't have information about that. Is there something else I can help you with regarding our solar lighting products?</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="followup-response">Follow-up Response:</label>
+                <textarea id="followup-response" rows="2">Is there anything else I can help you with?</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-request-response">Contact Request Response:</label>
+                <textarea id="contact-request-response" rows="2">Before you go, could you please provide your name, email, and phone number so we can assist you better in the future?</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="thank-you-response">Thank You Response:</label>
+                <textarea id="thank-you-response" rows="2">Thank you for providing your contact information. We appreciate your interest in ABC Lighting Company. Have a wonderful day!</textarea>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button id="save-button" class="primary-button">Save Changes</button>
+            <button id="reset-button" class="secondary-button">Reset Defaults</button>
+        </div>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html> 
