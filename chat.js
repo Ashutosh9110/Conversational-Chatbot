@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let conversationState = 'greeting';
     let contactInfo = {};
     
-    // Initialize the chat
     function initChat() {
         displayBotMessage(defaultResponses.greeting);
     }
@@ -87,7 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleGreetingState(message) {
         let responded = false;
         
-        if (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show me')) {
+        // Check for greetings first
+        if (message.includes('hello') || message.includes('hey') || message.includes('hi') || message.includes('greetings') || message.includes('howdy')) {
+            displayBotMessage(defaultResponses.niceties);
+            responded = true;
+        }
+        // Handle image requests
+        else if (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show me')) {
             console.log("Image request detected:", message);
             
             let foundProduct = null;

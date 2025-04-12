@@ -111,14 +111,14 @@ const products = [
             "Heat and impact resistant"
         ]
     }
-];
+];  
 
 // Create images directory folder to store product images
 const imagesDir = "images";
 
 // Default bot responses
 const defaultResponses = {
-    niceties: "Hello, I am doing good. Thank you. How can I help you today?",
+    niceties: "Hello. How can I help you today?",
     greeting: "Hello! Welcome to ABC Lighting Company. I'm your virtual assistant. How can I help you today?",
     farewell: "Thank you for chatting with us. Have a great day!",
     fallback: "I'm sorry, I don't have information about that. Is there something else I can help you with regarding our solar lighting products?",
