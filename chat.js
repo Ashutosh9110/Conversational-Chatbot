@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    // Display an image in the chat
     function displayImage(imageUrl) {
         console.log('Attempting to display image:', imageUrl);
         const messageElement = document.createElement('div');
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const image = document.createElement('img');
         
-        // Set up event handlers before setting src
         image.onerror = function() {
             console.error('Image failed to load:', imageUrl);
             this.onerror = null;
@@ -48,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Image loaded successfully:', imageUrl);
         };
         
-        // Now set src and alt
         image.src = imageUrl;
         image.alt = 'Product Image';
         
@@ -86,15 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Handle the greeting state of the conversation
+    // Handle the greetings
     function handleGreetingState(message) {
         let responded = false;
         
-        // First check for specific product image requests as top priority
         if (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show me')) {
             console.log("Image request detected:", message);
             
-            // Check if the message mentions a specific product type
             let foundProduct = null;
             for (const product of products) {
                 if ((product.id === 'street-light' && (message.includes('street') || message.includes('streetlight'))) ||
@@ -118,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Check for company information queries
+        // company information 
         else if (message.includes('about') || message.includes('company info') || message.includes('abc lighting') || message.includes("tell me about yourself")) {
             displayBotMessage(`${companyData.name} is ${companyData.description} ${companyData.generalInfo}`);
             responded = true;
@@ -134,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             responded = true;
         }
         
-        // Check for business hours queries
+        // business hours queries
         else if (message.includes('hours') || message.includes('open') || message.includes('when')) {
             let hoursText = 'Our business hours are:';
             companyData.businessHours.forEach(hours => {
@@ -144,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             responded = true;
         }
         
-        // Check for product queries
+        // product queries
         else if (message.includes('product') || message.includes('lights') || message.includes('lighting')) {
             let productText = 'We offer the following solar lighting products:';
             products.forEach(product => {
@@ -154,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
             responded = true;
         }
         
-        // Check for specific product queries (without image requests)
         else {
             for (const product of products) {
                 if (message.includes(product.id) || 
@@ -182,12 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // If no specific response was generated, use fallback
         if (!responded) {
             displayBotMessage(defaultResponses.fallback);
         }
         
-        // Always ask follow-up question
         setTimeout(() => {
             displayBotMessage(defaultResponses.followUp);
             conversationState = 'followUp';
@@ -196,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Handle the follow-up state of the conversation
     function handleFollowUpState(message) {
-        if (message.includes('no') || message.includes('that') || message.includes('all') || message.includes('thanks') || message.includes('thank you')) {
+        if (message.includes('no') || message.includes('that') || message.includes('all') || message.includes('thanks') || message.includes('thank you') || message.includes('')) {
             displayBotMessage(defaultResponses.contactRequest);
             conversationState = 'contactRequest';
         } else {
@@ -207,8 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Handle the contact request state of the conversation
     function handleContactRequestState(message) {
-        // Simple logic to capture contact info
-        // In a real application, this would be more sophisticated
         contactInfo.raw = message;
         
         displayBotMessage(defaultResponses.thankYou);
@@ -238,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Initialize the chat
+    // Initializing the chat
     initChat();
 });
                     
