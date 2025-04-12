@@ -19,7 +19,7 @@ const companyData = {
         "Saturday: 9:00 AM - 3:00 PM",
         "Sunday: Closed"
     ],
-    generalInfo: "ABC Lighting Corp has been in business since 2005, specializing in solar-powered lighting solutions that help reduce energy costs while providing reliable illumination."
+    generalInfo: "ABC Lighting Corp has been in business since 2015, specializing in solar-powered lighting solutions that help reduce energy costs while providing reliable illumination."
 };
 
 // Child datasets - Products
@@ -121,7 +121,7 @@ const defaultResponses = {
     niceties: "Hello. How can I help you today?",
     greeting: "Hello! Welcome to ABC Lighting Company. I'm your virtual assistant. How can I help you today?",
     farewell: "Thank you for chatting with us. Have a great day!",
-    fallback: "I'm sorry, I don't have information about that. Is there something else I can help you with regarding our solar lighting products?",
+    fallback: "I'm sorry, I don't have information about that.",
     followUp: "Is there anything else I can help you with?",
     contactRequest: "Before you go, could you please provide your name, email, and phone number so we can assist you better in the future?",
     thankYou: "Thank you for providing your contact information. We appreciate your interest in ABC Lighting Company. Have a wonderful day!"

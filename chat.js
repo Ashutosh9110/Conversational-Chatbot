@@ -85,37 +85,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle the greetings
     function handleGreetingState(message) {
         let responded = false;
+        let skipFollowUp = false;
         
         // Check for greetings first
         if (message.includes('hello') || message.includes('hey') || message.includes('hi') || message.includes('greetings') || message.includes('howdy')) {
             displayBotMessage(defaultResponses.niceties);
             responded = true;
+            skipFollowUp = true;
         }
-        // Handle image requests
+        // Handle product image requests - prioritize specific product images
+        else if (message.includes('street') && (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show'))) {
+            console.log("Street light image request detected");
+            // Find the street light product
+            const streetLightProduct = products.find(product => product.id === 'street-light');
+            if (streetLightProduct) {
+                displayBotMessage(`Here are the images of our ${streetLightProduct.name}:`);
+                displayImages(streetLightProduct.imageUrls);
+                responded = true;
+            }
+        }
+        else if (message.includes('driveway') && (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show'))) {
+            console.log("Driveway light image request detected");
+            const drivewayLightProduct = products.find(product => product.id === 'driveway-light');
+            if (drivewayLightProduct) {
+                displayBotMessage(`Here are the images of our ${drivewayLightProduct.name}:`);
+                displayImages(drivewayLightProduct.imageUrls);
+                responded = true;
+            }
+        }
+        else if (message.includes('wall') && (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show'))) {
+            console.log("Wall light image request detected");
+            const wallLightProduct = products.find(product => product.id === 'wall-light');
+            if (wallLightProduct) {
+                displayBotMessage(`Here are the images of our ${wallLightProduct.name}:`);
+                displayImages(wallLightProduct.imageUrls);
+                responded = true;
+            }
+        }
+        // Handle generic image requests
         else if (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show me')) {
-            console.log("Image request detected:", message);
-            
-            let foundProduct = null;
-            for (const product of products) {
-                if ((product.id === 'street-light' && (message.includes('street') || message.includes('streetlight'))) ||
-                    (product.id === 'driveway-light' && (message.includes('driveway') || message.includes('path'))) ||
-                    (product.id === 'wall-light' && (message.includes('wall') || message.includes('outdoor')))) {
-                    
-                    foundProduct = product;
-                    break;
-                }
-            }
-            
-            if (foundProduct) {
-                console.log("Found specific product for image request:", foundProduct.name);
-                displayBotMessage(`Here are the images of our ${foundProduct.name}:`);
-                displayImages(foundProduct.imageUrls);
-                responded = true;
-            } else {
-                // Generic image request
-                displayBotMessage("We offer several solar lighting products. Which product would you like to see images of? We have street lights, driveway lights, and wall lights.");
-                responded = true;
-            }
+            console.log("Generic image request detected:", message);
+            displayBotMessage("We offer several solar lighting products. Which product would you like to see images of? We have street lights, driveway lights, and wall lights.");
+            responded = true;
         }
         
         // company information 
@@ -185,20 +196,59 @@ document.addEventListener('DOMContentLoaded', () => {
             displayBotMessage(defaultResponses.fallback);
         }
         
-        setTimeout(() => {
-            displayBotMessage(defaultResponses.followUp);
-            conversationState = 'followUp';
-        }, 1000);
+        // Only ask follow-up if not a greeting
+        if (!skipFollowUp) {
+            setTimeout(() => {
+                displayBotMessage(defaultResponses.followUp);
+                conversationState = 'followUp';
+            }, 1000);
+        }
     }
     
     // Handle the follow-up state of the conversation
     function handleFollowUpState(message) {
-        if (message.includes('no') || message.includes('that') || message.includes('all') || message.includes('thanks') || message.includes('thank you') || message.includes('')) {
+        // Check for ending conversation first
+        if (message.includes('no') || message.includes('that') || message.includes('all') || message.includes('thanks') || message.includes('thank you')) {
             displayBotMessage(defaultResponses.contactRequest);
             conversationState = 'contactRequest';
-        } else {
+        } 
+        // Check for product image requests first - these should always work regardless of state
+        else if (message.includes('street') && (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show'))) {
+            console.log("Street light image request detected in follow-up");
+            // Find the street light product
+            const streetLightProduct = products.find(product => product.id === 'street-light');
+            if (streetLightProduct) {
+                displayBotMessage(`Here are the images of our ${streetLightProduct.name}:`);
+                displayImages(streetLightProduct.imageUrls);
+            }
+        }
+        else if (message.includes('driveway') && (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show'))) {
+            console.log("Driveway light image request detected in follow-up");
+            const drivewayLightProduct = products.find(product => product.id === 'driveway-light');
+            if (drivewayLightProduct) {
+                displayBotMessage(`Here are the images of our ${drivewayLightProduct.name}:`);
+                displayImages(drivewayLightProduct.imageUrls);
+            }
+        }
+        else if (message.includes('wall') && (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show'))) {
+            console.log("Wall light image request detected in follow-up");
+            const wallLightProduct = products.find(product => product.id === 'wall-light');
+            if (wallLightProduct) {
+                displayBotMessage(`Here are the images of our ${wallLightProduct.name}:`);
+                displayImages(wallLightProduct.imageUrls);
+            }
+        }
+        else {
+            // For all other queries, go back to greeting state handling
             conversationState = 'greeting';
             handleGreetingState(message);
+        }
+        
+        // If we handled an image request directly, ask follow-up after showing image
+        if (message.includes('image') || message.includes('picture') || message.includes('photo') || message.includes('show')) {
+            setTimeout(() => {
+                displayBotMessage(defaultResponses.followUp);
+            }, 1000);
         }
     }
     
